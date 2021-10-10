@@ -1,5 +1,10 @@
 #include <stdio.h>
-void potencia(int *b, int *p, int cant);
+#include <stdlib.h>
+
+#define precision 16
+#define precisionEntera 10
+#define precisionDecimal 5
+
 
 void deNa10Entero(int *pBase,char *pN, int *pResultadoNa10 ){
 
@@ -18,7 +23,8 @@ void deNa10Entero(int *pBase,char *pN, int *pResultadoNa10 ){
     int *pDigigitoNum;
     pDigigitoNum=malloc(sizeof(int));
 
-    while(*pN+precisionDecimal==nullptr){
+
+    while(*(pN+precisionDecimal)==NULL){
             pN--;
     }
 
@@ -35,11 +41,11 @@ void deNa10Entero(int *pBase,char *pN, int *pResultadoNa10 ){
                }
         }
 
-        potencia(&base,&pot, &cont);
+        potencia(&pBase,&pPot, &pCont);
 
         *pResultadoNa10+=*pDigito * *pPot;
-        cont++;
-    }while(pN>pN+precisionEntera+1)
+        pCont++;
+    }while(pN>pN+precisionEntera+1);
 
     free(pPot);
     free(pDigito);
@@ -65,7 +71,7 @@ void deNa10Decimal(int *pBase,char *pN, int *pResultadoNa10){
     int *pDigigitoNum;
     pDigigitoNum=malloc(sizeof(int));
 
-    while(*pN+precisionDecimal==nullptr){
+    while(*(pN+precisionDecimal)==NULL){
             pN--;
         }
 
@@ -83,11 +89,11 @@ void deNa10Decimal(int *pBase,char *pN, int *pResultadoNa10){
                }
         }
 
-        potencia(&base,&pot, &cont);
+        potencia(&pBase,&pPot, &pCont);
 
         *pResultadoNa10+=*pDigito / *pPot;
-        cont++;
-    }while(pN<pN+precisionDecimal+1)
+        pCont++;
+    }while(pN<pN+precisionDecimal+1);
 
     free(pPot);
     free(pDigito);
@@ -95,8 +101,8 @@ void deNa10Decimal(int *pBase,char *pN, int *pResultadoNa10){
     free(pDigigitoNum);
     free(pCont);
 }
-void potencia(int *b, int *p, int cant){
+void potencia(int *b, int *p, int *cant){
     *p=1;
-    for(int j=0;j< cant;j++)
+    for(int j=0;j< *cant;j++)
         *p*=*b;
 }

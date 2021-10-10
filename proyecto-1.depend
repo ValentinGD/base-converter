@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1633893201 source:c:\users\valen\desktop\uni\orga\codeo\orga_proyecto1\base-converter\main.c
+	<stdio.h>
+	<stdlib.h>
+	"De_Base_N_a_10.c"
+
+1633893599 c:\users\valen\desktop\uni\orga\codeo\orga_proyecto1\base-converter\de_base_n_a_10.c
+	<stdio.h>
+	<stdlib.h>
+
+1633892052 source:c:\users\valen\desktop\uni\orga\codeo\orga_proyecto1\base-converter\de_base_n_a_10.c
+	<stdio.h>
+	<stdlib.h>
+
