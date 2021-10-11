@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1633983120 source:c:\users\valen\desktop\uni\orga\codeo\orga_proyecto1\base-converter\main.c
+1633988213 source:c:\users\valen\desktop\uni\orga\codeo\orga_proyecto1\base-converter\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -9,11 +9,11 @@
 	<stdio.h>
 	<stdlib.h>
 
-1633983088 source:c:\users\valen\desktop\uni\orga\codeo\orga_proyecto1\base-converter\de_base_n_a_10.c
+1633988831 source:c:\users\valen\desktop\uni\orga\codeo\orga_proyecto1\base-converter\de_base_n_a_10.c
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
 	<string.h>
 
-1633981041 c:\users\valen\desktop\uni\orga\codeo\orga_proyecto1\base-converter\de_base_n_a_10.h
+1633988657 c:\users\valen\desktop\uni\orga\codeo\orga_proyecto1\base-converter\de_base_n_a_10.h
 

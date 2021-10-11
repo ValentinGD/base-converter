@@ -12,7 +12,7 @@ void deNa10Entero(int *BaseOrigen,char *numeroEntero, char *stringResultadoNa10)
 void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10String);
 void concatenarCadenas(char *numEntero, char *numDecimal, char *numCompleto);
 void mapearDigito(char * pDigito, int *digitoInt);
-void toString(float *resultadoFloat, char * resultadoString, char * parteNum );
+void toString(double *resultadoFloat, char * resultadoString, char * parteNum );
 void dividirCadenas(char *numEntero, char *numDecimal, char *numCompleto);
     /*
     Cadena se asume terminada en '\0' y con todos sus caracteres entre '0' y '9' o '.'
@@ -29,13 +29,13 @@ void deNa10(int *baseOrigen, char *numero, char *resultado){
     numeroParteEntera=(char *)malloc(sizeof(char)*11);
 
     char *numeroParteDecimal;
-    numeroParteDecimal=(char *)malloc(sizeof(char)*6);
+    numeroParteDecimal=(char *)malloc(sizeof(char)*40);
 
     char *numeroConvertidoParteEntera;
     numeroConvertidoParteEntera=(char *)malloc(sizeof(char)*14);
 
     char *numeroConvertidoParteDecimal;
-    numeroConvertidoParteDecimal=(char *)malloc(sizeof(char)*8);
+    numeroConvertidoParteDecimal=(char *)malloc(sizeof(char)*20);
 
     dividirCadenas(numeroParteEntera,numeroParteDecimal,numero);
     printf("El numero %s se dividio en la parte entera : %s\n y la parte decimal: %s\n",numero,numeroParteEntera,numeroParteDecimal);
@@ -50,7 +50,7 @@ void deNa10(int *baseOrigen, char *numero, char *resultado){
     printf("___________________________________________________________________________________________________________\n");
 
     concatenarCadenas(numeroConvertidoParteEntera,numeroConvertidoParteDecimal,resultado);
-    printf("El numero %s en base %d, convertido a base 10 es: %s",numero,*baseOrigen,resultado);
+    printf("El numero %s en base %d, convertido a base 10 es: %s\n",numero,*baseOrigen,resultado);
     printf("___________________________________________________________________________________________________________\n");
 
     free(numeroParteEntera);
@@ -78,8 +78,8 @@ void deNa10Entero(int *BaseOrigen,char *numeroEntero, char *stringResultadoNa10)
     int *tamNumeroEntero;
     tamNumeroEntero=(int *)malloc(sizeof(int));
 
-    float *resultadoNa10;
-    resultadoNa10=(float *)malloc(sizeof(float));
+    double *resultadoNa10;
+    resultadoNa10=(double *)malloc(sizeof(double));
 
     char *parteDelNumero;
     parteDelNumero=(char *)malloc(sizeof(char));
@@ -87,24 +87,25 @@ void deNa10Entero(int *BaseOrigen,char *numeroEntero, char *stringResultadoNa10)
     *parteDelNumero='e';
     *pDigitoNum=0;
     *tamNumeroEntero=strlen(numeroEntero);
-    *indiceNumeroEntero=*tamNumeroEntero-2;
+    *indiceNumeroEntero=*tamNumeroEntero-1;
     *indicePotencia=0;
     *resultadoNa10=0;
     *pDigito=numeroEntero[*indiceNumeroEntero];
     while( *indiceNumeroEntero>=0){
-
+        //printf("indiceNumeroEntero: %d\n",*indiceNumeroEntero);
+        //printf("tamNumeroEntero: %d\n",*tamNumeroEntero);
         mapearDigito(pDigito,pDigitoNum);
 
         *baseElevada=pow(*BaseOrigen,*indicePotencia);
 
         *indicePotencia=*indicePotencia+1;
-        printf("pDigito Es: %c\n", *pDigito);
-        printf("baseOrigen Es: %d\n", *BaseOrigen);
-        printf("baseElevada Es: %d\n", *baseElevada);
-        printf("pDigitoNum Es: %d\n", *pDigitoNum);
-        *resultadoNa10= *resultadoNa10 + (float)(*pDigitoNum * *baseElevada);
-        printf("el resultado es: %f\n", *resultadoNa10);
-        printf("---------------------------------------------------\n");
+        //printf("pDigito Es: %c\n", *pDigito);
+        //printf("baseOrigen Es: %d\n", *BaseOrigen);
+        //printf("baseElevada Es: %d\n", *baseElevada);
+        //printf("pDigitoNum Es: %d\n", *pDigitoNum);
+        *resultadoNa10= *resultadoNa10 + (double)(*pDigitoNum * *baseElevada);
+       // printf("el resultado es: %f\n", *resultadoNa10);
+        //printf("---------------------------------------------------\n");
         *indiceNumeroEntero=*indiceNumeroEntero-1;
         *pDigito=numeroEntero[*indiceNumeroEntero];
     }
@@ -140,8 +141,8 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
     int *tamNumeroDecimal;
     tamNumeroDecimal=(int *)malloc(sizeof(int));
 
-    float *resultadoNa10;
-    resultadoNa10=(float *)malloc(sizeof(float));
+    double *resultadoNa10;
+    resultadoNa10=(double *)malloc(sizeof(double));
 
     char *parteDelNumero;
     parteDelNumero=(char *)malloc(sizeof(char));
@@ -155,24 +156,25 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
 
     *pDigito=numeroDecimal[*indiceNumeroDecimal];
     //printf("pDigito Es: %c\n", *pDigito);
-    while( numeroDecimal[*indiceNumeroDecimal]!='\o'){
+    while( numeroDecimal[*indiceNumeroDecimal]!='\0'){
         mapearDigito(pDigito,pDigitoNum);
 
         *baseElevada=pow(*BaseOrigen,*indicePotencia);
 
         *indicePotencia=*indicePotencia+1;
-       // printf("baseOrigen Es: %d\n", *BaseOrigen);
-       // printf("baseElevada Es: %d\n", *baseElevada);
-       // printf("pDigitoNum Es: %d\n", *pDigitoNum);
-        *resultadoNa10= *resultadoNa10 + ((float) *pDigitoNum /(float) *baseElevada);
-       // printf("---------------------------------------------------\n");
+        //printf("baseOrigen Es: %d\n", *BaseOrigen);
+        //printf("baseElevada Es: %d\n", *baseElevada);
+        //printf("pDigitoNum Es: %d\n", *pDigitoNum);
+        *resultadoNa10= *resultadoNa10 + ((double) *pDigitoNum /(double) *baseElevada);
+        //printf("El resultado es: %f\n", *resultadoNa10);
+        //printf("---------------------------------------------------\n");
         *indiceNumeroDecimal=*indiceNumeroDecimal+1;
         *pDigito=numeroDecimal[*indiceNumeroDecimal];
     }
 
     toString(resultadoNa10,resultadoNa10String,parteDelNumero);
 
-   // printf("resultado parte decimal:%s\n", resultadoNa10String);
+    //printf("resultado parte decimal:%s\n", resultadoNa10String);
     free(baseElevada);
     free(pDigito);
     free(pDigitoNum);
@@ -182,41 +184,34 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
     free(resultadoNa10);
     free(parteDelNumero);
 }
- void toString(float *resultadoFloat, char * resultadoString, char * parteNum ){
+ void toString(double *resultadoFloat, char * resultadoString, char * parteNum ){
      int *tamResultado;
     tamResultado=(int *)malloc(sizeof(int));
 
     int *indiceResultado;
     indiceResultado=(int *)malloc(sizeof(int));
 
-    int *largoResultado;
-    largoResultado=(int *)malloc(sizeof(int));
-
-
-    if(*parteNum=='d'){
-        *largoResultado=7;
-    }else{
-        *largoResultado=13;
-    }
-
-    gcvt(*resultadoFloat,20 ,resultadoString);
+    sprintf(resultadoString,"%f",*resultadoFloat);
+    //printf("resultadoString: %s\n",resultadoString);
+    //printf("resultadoFloat: %f\n",*resultadoFloat);
     *tamResultado=strlen(resultadoString);
-    resultadoString[*tamResultado]='\o';
     *indiceResultado=0;
-
+    //printf("tamResultado: %d\n",*tamResultado);
     if(*parteNum=='d'){
         while(*indiceResultado < *tamResultado){
             if(*indiceResultado>=1){
                 resultadoString[(*indiceResultado) -1]=resultadoString[*indiceResultado];
+                resultadoString[*indiceResultado]='0';
             }
             *indiceResultado=*indiceResultado +1;
         }
-    resultadoString[*tamResultado]='\o';
+    resultadoString[*tamResultado-1]='\0';
+    }else{
+        resultadoString[*tamResultado]='\0';
     }
 
     free(tamResultado);
     free(indiceResultado);
-    free(largoResultado);
  }
  void mapearDigito(char * pDigito, int *digitoInt){
 
@@ -250,13 +245,13 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
 
     *indiceNum=0;
 
-    while(numDecimal[*indiceNum]!='\o'){
+    while(numDecimal[*indiceNum]!='\0'){
         numCompleto[*indiceNumCompleto]=numDecimal[*indiceNum];
         *indiceNum=*indiceNum+1;
         *indiceNumCompleto=*indiceNumCompleto+1;
     }
 
-     numCompleto[*indiceNumCompleto]='\o';
+     numCompleto[*indiceNumCompleto]='\0';
 
     free(indiceNum);
     free(indiceNumCompleto);
@@ -279,16 +274,16 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
     }
 
     *indiceNumCompleto=*indiceNumCompleto+1;
-    numEntero[*indiceNum]='\o';
+    numEntero[*indiceNum]='\0';
     *indiceNum=0;
 
-    while(numCompleto[*indiceNumCompleto]!='\o'){
-       // printf("Numero: %c\n", numCompleto[*indiceNumCompleto]);
+    while(numCompleto[*indiceNumCompleto]!='\0'){
+        // printf("Numero: %c\n", numCompleto[*indiceNumCompleto]);
         numDecimal[*indiceNum]=numCompleto[*indiceNumCompleto];
         *indiceNum=*indiceNum+1;
         *indiceNumCompleto=*indiceNumCompleto+1;
     }
-    numDecimal[*indiceNum]='\o';
+    numDecimal[*indiceNum]='\0';
 
     free(indiceNum);
     free(indiceNumCompleto);

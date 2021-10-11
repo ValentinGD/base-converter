@@ -21,11 +21,11 @@ int main() {
     baseDestino=(int *) malloc(sizeof(int));
 
     char *numConvertido;
-    numConvertido=(char *) malloc(sizeof(char)*19);
+    numConvertido=(char *) malloc(sizeof(char)*40);
 
 
-    numero="5bc.62D\\o";
-    *baseOrigen=16;
+    numero="66.5632123450\0";
+    *baseOrigen=7;
     *baseDestino=10;
     if(*baseDestino==10){
             deNa10(baseOrigen,numero,numConvertido);
