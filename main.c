@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "De_Base_N_a_10.h"
+#include "control.h"
 
 #define precision 16
 #define precisionEntera 10
@@ -23,17 +24,19 @@ int main() {
     char *numConvertido;
     numConvertido=(char *) malloc(sizeof(char)*40);
 
+    int *control;
+    control=(int *) malloc(sizeof(int));
 
-    numero="66.5632123450\0";
-    *baseOrigen=7;
+
+    numero="66d.563\0";
+    *baseOrigen=1;
     *baseDestino=10;
-    if(*baseDestino==10){
-            deNa10(baseOrigen,numero,numConvertido);
+    recorrerYControlar(numero,baseOrigen,control);
 
+    if(*control==0){
+        printf("El numero %s cumple con el formato que precisa el programa\n",numero);
     }else{
-        if(*baseDestino==10){
-
-        }
+        printf("El numero %s NO cumple con el formato que precisa el programa\n",numero);
     }
 
     free(numero);

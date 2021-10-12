@@ -22,7 +22,11 @@ void dividirCadenas(char *numEntero, char *numDecimal, char *numCompleto);
     Estrategia utilizada para convertir la parte fraccionaria: Metodo de la división
 
     */
-
+/* deNa10(): recibe el valor de la base origen, el numero escrito en cadena de caracteres y espacio
+    para guardar el resultado por parámeto, luego  se encarga de organizar el funcionamiento de
+    los metodos empleados para realizar el cambio de base.
+    Asume *baseOrigen, número válido y *numero una cadena de caracteres válida
+*/
 void deNa10(int *baseOrigen, char *numero, char *resultado){
 
     char *numeroParteEntera;
@@ -58,6 +62,11 @@ void deNa10(int *baseOrigen, char *numero, char *resultado){
     free(numeroConvertidoParteEntera);
     free(numeroConvertidoParteDecimal);
 }
+/*  El método deNa10Entero recibe el valor de la base origen, la parte entera del número a ser
+    convertido y, el espacio para guardar el resultado por parámetro. Con esta información efectua
+    el algoritmo de cambio de base.
+    Asume *baseOrigen, número válido y *numeroEntero una cadena de caracteres válida
+*/
 void deNa10Entero(int *BaseOrigen,char *numeroEntero, char *stringResultadoNa10){
 
     char *pDigito;
@@ -121,6 +130,11 @@ void deNa10Entero(int *BaseOrigen,char *numeroEntero, char *stringResultadoNa10)
     free(resultadoNa10);
     free(parteDelNumero);
 }
+/*  El método deNa10Decimal recibe el valor de la base origen, la parte decimal del número a ser
+    convertido y, el espacio para guardar el resultado por parámetro. Con esta información efectua
+    el algoritmo de cambio de base.
+    Asume *baseOrigen, número válido y *numeroDecimal una cadena de caracteres válida
+*/
 
 void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10String){
     char *pDigito;
@@ -171,7 +185,6 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
         *indiceNumeroDecimal=*indiceNumeroDecimal+1;
         *pDigito=numeroDecimal[*indiceNumeroDecimal];
     }
-
     toString(resultadoNa10,resultadoNa10String,parteDelNumero);
 
     //printf("resultado parte decimal:%s\n", resultadoNa10String);
@@ -184,6 +197,11 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
     free(resultadoNa10);
     free(parteDelNumero);
 }
+    /* toString(): recibe por parámetros el valor del número convertido, el espacio para
+        guardar el resultado y si el número recibido es entero o decimal, luego transforma
+        al número de tipo de dato float a tipo de dato String.
+        Asume *resultadoFloat un número válido y *resultadoString con longitud válida
+    */
  void toString(double *resultadoFloat, char * resultadoString, char * parteNum ){
      int *tamResultado;
     tamResultado=(int *)malloc(sizeof(int));
@@ -213,6 +231,10 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
     free(tamResultado);
     free(indiceResultado);
  }
+ /* mapearDigito(): recibe un digito y espacio para guardar el resultado, luego mediante un mapeo
+    transforma los digitos en tipo de dato char a su correspondiente valor en tipo de dato int.
+        Asume *pDigito, un caracter válido
+ */
  void mapearDigito(char * pDigito, int *digitoInt){
 
     if(*pDigito==('A') || *pDigito==('B') || *pDigito==('C') || *pDigito==('D') || *pDigito==('E') || *pDigito==('F')){
@@ -227,6 +249,13 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
     }
     }
  }
+ /* concatenarCadenas(): el m{etodo recibe 3 cadenas de caracteres por parametro,
+    una el valor entero del numero, la segunda el valor decimal del numero y espacio
+    para guardar el resultado, luego concatena las cadenas del valor entero con la
+    del valor decimal y devuelve el resultado.
+    Asume las cadenas con el valor del numero validas, y asume cadena con valor decimal
+    iniciada con primera componente "."
+ */
  void concatenarCadenas(char *numEntero, char *numDecimal, char *numCompleto){
     int *indiceNumCompleto;
     indiceNumCompleto=(int *)malloc(sizeof(int));
@@ -256,6 +285,13 @@ void deNa10Decimal(int *BaseOrigen,char *numeroDecimal, char *resultadoNa10Strin
     free(indiceNum);
     free(indiceNumCompleto);
  }
+ /*dividirCadenas(): el método recibe 3 cadenas de caracteres por parametro,
+    una para guardar el valor entero del número, la segunda para guardar el valor decimal del
+    número y la utima con el valor del numero completo, luego divide la cadena
+    con el valor del numero en dos sub cadenas, una con el valor entero y la otra con el
+    valor decimal, devuelve estas 2 subcadenas como resultado.
+    Asume longitud y formato válido para las cadenas de caracteres
+ */
  void dividirCadenas(char *numEntero, char *numDecimal, char *numCompleto){
     // printf("Entra en dividirCadenas\n");
     int *indiceNumCompleto;
